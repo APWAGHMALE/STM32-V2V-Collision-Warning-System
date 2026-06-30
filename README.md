@@ -166,7 +166,7 @@ Displays a warning whenever emergency braking information is received from anoth
 
 # Author
 
-**Atharv Waghmale**
+**Atharv Pramod Waghmale**
 
 Bachelor of Engineering (Electronics & Telecommunication)
 
