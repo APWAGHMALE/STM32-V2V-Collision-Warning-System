@@ -1,0 +1,3 @@
+../Core/Src/mpu6050.c:26:6:MPU6050_Initialization	2
+../Core/Src/mpu6050.c:88:6:MPU6050_Get6AxisRawData	2
+../Core/Src/mpu6050.c:112:6:MPU6050_ProcessData	1

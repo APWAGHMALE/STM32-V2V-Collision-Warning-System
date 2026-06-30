@@ -1,0 +1,13 @@
+../Core/Src/gps.c:82:6:GPS_Init	16	static
+../Core/Src/gps.c:103:5:GPS_Process	16	static
+../Core/Src/gps.c:149:12:GPS_GetData	24	static
+../Core/Src/gps.c:150:12:GPS_HasFix	4	static
+../Core/Src/gps.c:151:12:GPS_GetUpdateAge	8	static
+../Core/Src/gps.c:152:12:GPS_GetUpdateCount	4	static
+../Core/Src/gps.c:153:12:GPS_GetParseErrors	4	static
+../Core/Src/gps.c:154:12:GPS_ResetStats	4	static
+../Core/Src/gps.c:164:13:GPS_ParseGPRMC	176	static
+../Core/Src/gps.c:226:13:GPS_ParseGPGGA	160	static
+../Core/Src/gps.c:266:15:GPS_ConvertLatitude	48	static
+../Core/Src/gps.c:275:15:GPS_ConvertLongitude	48	static
+../Core/Src/gps.c:291:6:HAL_UART_RxCpltCallback	24	static

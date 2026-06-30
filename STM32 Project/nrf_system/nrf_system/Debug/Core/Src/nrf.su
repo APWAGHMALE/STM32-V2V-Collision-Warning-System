@@ -1,0 +1,10 @@
+../Core/Src/nrf.c:37:13:NRF24_WriteReg	24	static
+../Core/Src/nrf.c:45:16:NRF24_ReadReg	24	static
+../Core/Src/nrf.c:56:13:NRF24_WriteRegMulti	24	static
+../Core/Src/nrf.c:65:13:NRF24_FlushTX	16	static
+../Core/Src/nrf.c:81:6:NRF24_Init	8	static
+../Core/Src/nrf.c:132:6:NRF24_TX_Mode	8	static
+../Core/Src/nrf.c:149:6:NRF24_Transmit	24	static
+../Core/Src/nrf.c:193:6:NRF24_RX_Mode	16	static
+../Core/Src/nrf.c:209:6:NRF24_ReadPacket	24	static
+../Core/Src/nrf.c:232:9:NRF24_CalcChecksum	24	static

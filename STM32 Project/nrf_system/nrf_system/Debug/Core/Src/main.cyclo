@@ -1,0 +1,7 @@
+../Core/Src/main.c:121:20:DBG_Print	1
+../Core/Src/main.c:129:13:LED_UpdateBrake	4
+../Core/Src/main.c:141:13:Dashboard_Print	7
+../Core/Src/main.c:212:13:PDR_Update	4
+../Core/Src/main.c:247:5:main	14
+../Core/Src/main.c:460:6:SystemClock_Config	3
+../Core/Src/main.c:510:6:Error_Handler	1
