@@ -1,21 +1,19 @@
-# STM32-V2V-Collision-Warning-System
-STM32-based Vehicle-to-Vehicle Collision Warning System using NRF24L01, GPS, MPU6050 and SH1106 OLED.
-
 # 🚗 STM32-Based Vehicle-to-Vehicle (V2V) Collision Warning System
 
-An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using the **STM32F411RE Nucleo Board**, **NRF24L01+ wireless transceiver**, **GPS (NEO-6M)**, **MPU6050 IMU**, and **SH1106 SPI OLED Display**. The system enables two vehicles to exchange real-time information such as speed, GPS location, acceleration, and braking status, providing early warnings to improve road safety.
+An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using the **STM32F411RE Nucleo-64**, **NRF24L01+ wireless transceiver**, **NEO-6M GPS**, **MPU6050 IMU**, and **1.3-inch SH1106 SPI OLED Display**. The system enables two vehicles to exchange real-time information such as speed, GPS coordinates, acceleration, and braking status, providing timely warnings to improve road safety.
 
 ---
 
 ## 📌 Features
 
-- Vehicle-to-Vehicle (V2V) Communication
-- Real-time Wireless Data Exchange using NRF24L01+
-- GPS-based Speed and Position Monitoring
+- Real-time Vehicle-to-Vehicle (V2V) Communication
+- Wireless Data Exchange using NRF24L01+
+- GPS-based Vehicle Speed Monitoring
+- GPS-based Latitude and Longitude Tracking
 - MPU6050 Acceleration Monitoring
 - Emergency Brake Detection
-- OLED-based Driver Warning Display
-- TDMA-based Communication Scheme
+- OLED Display for Driver Information and Warnings
+- TDMA-based Communication Protocol
 - Developed using STM32 HAL Library
 
 ---
@@ -23,133 +21,173 @@ An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using th
 ## 🛠 Hardware Used
 
 | Component | Quantity |
-|-----------|---------:|
+|-----------|:--------:|
 | STM32F411RE Nucleo-64 | 2 |
-| NRF24L01+ Wireless Module | 2 |
-| NEO-6M GPS Module | 2 |
-| MPU6050 IMU Sensor | 2 |
-| SH1106 1.3" SPI OLED Display | 2 |
-| USB Power Supply | 2 |
+| NRF24L01+ | 2 |
+| NEO-6M GPS | 2 |
+| MPU6050 | 2 |
+| SH1106 1.3" SPI OLED | 2 |
 
 ---
 
 ## 💻 Software Used
 
 - STM32CubeIDE
-- STM32 HAL Drivers
+- STM32 HAL Library
 - Embedded C
 - Git & GitHub
 
 ---
 
-## 📡 System Architecture
+# System Architecture
 
-```
-                 Vehicle A                         Vehicle B
-          ┌──────────────────┐              ┌──────────────────┐
-          │ STM32F411RE      │              │ STM32F411RE      │
-          │                  │              │                  │
- GPS ───▶ │                  │              │                  │ ◀── GPS
- MPU6050 ▶│                  │◀────────────▶│                  │ ◀── MPU6050
- OLED ───▶│                  │  NRF24L01+   │                  │ ◀── OLED
-          └──────────────────┘              └──────────────────┘
-```
+> Replace the image below with your block diagram.
+
+<p align="center">
+<img src="Images/Block_Diagram.png" width="800">
+</p>
 
 ---
 
-## ⚙ Working Principle
+# Hardware Prototype
 
-1. GPS module continuously measures vehicle speed and position.
-2. MPU6050 monitors vehicle acceleration and braking.
+<p align="center">
+<img src="Images/Hardware_Setup.jpg" width="700">
+</p>
+
+---
+
+# OLED Display
+
+### Normal Display
+
+<p align="center">
+<img src="Images/OLED_Normal.jpg" width="250">
+</p>
+
+Displays:
+
+- Latitude
+- Longitude
+- Speed
+- Acceleration (AX, AY, AZ)
+- GPS Fix Status
+
+---
+
+### Brake Warning
+
+<p align="center">
+<img src="Images/OLED_BrakeWarning.jpg" width="250">
+</p>
+
+Displays a warning whenever emergency braking information is received from another vehicle.
+
+---
+
+# Working Principle
+
+1. GPS module continuously acquires vehicle position and speed.
+2. MPU6050 measures vehicle acceleration.
 3. STM32 processes the sensor data.
-4. Vehicle information is transmitted through the NRF24L01+ module.
-5. The receiving STM32 decodes the received packet.
-6. Emergency braking information is displayed on the OLED.
-7. Communication follows a TDMA schedule to minimize packet collisions.
+4. A data packet containing vehicle information is created.
+5. NRF24L01 wirelessly transmits the packet.
+6. The receiving vehicle decodes the received packet.
+7. If emergency braking is detected, the OLED displays a warning message.
+8. A TDMA communication scheme is used to reduce packet collisions.
 
 ---
 
-## 📦 Packet Structure
+# Hardware Connections
 
-| Field | Size |
-|------|------:|
-| Vehicle ID | 1 Byte |
-| Latitude | 4 Bytes |
-| Longitude | 4 Bytes |
-| Speed | 4 Bytes |
-| Acceleration X | 4 Bytes |
-| Acceleration Y | 4 Bytes |
-| Acceleration Z | 4 Bytes |
-| Brake Flag | 1 Byte |
-| Sequence Number | 2 Bytes |
+## GPS (NEO-6M)
+
+| GPS | STM32 |
+|------|--------|
+| TX | USART6_RX |
+| RX | USART6_TX |
+| VCC | 3.3V |
+| GND | GND |
 
 ---
 
-## 📷 Project Images
+## MPU6050
 
-### Hardware Setup
-
-> *(Insert image here)*
-
-```
-Images/Hardware_Setup.jpg
-```
-
-### OLED Display
-
-> *(Insert image here)*
-
-```
-Images/OLED_Display.jpg
-```
-
-### Block Diagram
-
-> *(Insert image here)*
-
-```
-Images/BlockDiagram.png
-```
+| MPU6050 | STM32 |
+|----------|--------|
+| SDA | I2C1 SDA |
+| SCL | I2C1 SCL |
+| VCC | 3.3V |
+| GND | GND |
 
 ---
 
-## 📂 Repository Structure
+## NRF24L01+
+
+| NRF24 | STM32 |
+|--------|--------|
+| CE | GPIO |
+| CSN | SPI1 NSS |
+| SCK | SPI1 SCK |
+| MOSI | SPI1 MOSI |
+| MISO | SPI1 MISO |
+| IRQ | Not Used |
+| VCC | 3.3V |
+| GND | GND |
+
+> **Note:** A **10 µF capacitor** is connected across the NRF24L01+ power pins to ensure a stable 3.3 V supply during wireless transmission.
+
+---
+
+## SH1106 SPI OLED
+
+| OLED | STM32 |
+|------|--------|
+| DIN | SPI1 MOSI |
+| CLK | SPI1 SCK |
+| CS | GPIO |
+| DC | GPIO |
+| RST | GPIO |
+| VCC | 3.3V |
+| GND | GND |
+
+---
+
+# Repository Structure
 
 ```
 STM32-V2V-Collision-Warning-System
 │
-├── STM32_Project/
-├── Hardware/
-├── Images/
-├── Documents/
-├── Videos/
-├── LICENSE
-└── README.md
+├── STM32_Project
+├── Images
+├── Documents
+├── README.md
+└── LICENSE
 ```
 
 ---
 
-## 🚀 Future Improvements
+# Future Improvements
 
 - Vehicle-to-Infrastructure (V2I) Communication
 - Road Side Unit (RSU) Integration
 - Blind Spot Detection
 - CAN Bus Integration
-- C-V2X / DSRC Communication
+- C-V2X Communication
 - Mobile Application Interface
 
 ---
 
-## 👨‍💻 Author
+# Author
 
 **Atharv Waghmale**
 
 Bachelor of Engineering (Electronics & Telecommunication)
 
-Embedded Systems | IoT | Automotive Electronics | VLSI
+Embedded Systems • Automotive Electronics • IoT • VLSI
 
 ---
 
-## 📄 License
+# License
 
 This project is licensed under the MIT License.
