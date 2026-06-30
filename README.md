@@ -100,68 +100,56 @@ Displays a warning whenever emergency braking information is received from anoth
 
 ## GPS (NEO-6M)
 
-| GPS | STM32 |
-|------|--------|
-| TX | USART6_RX |
-| RX | USART6_TX |
-| VCC | 3.3V |
-| GND | GND |
+| GPS Pin | STM32F411RE Pin | Description |
+|----------|-----------------|-------------|
+| TX | **PC7 (USART6_RX)** | GPS → STM32 Data |
+| RX | **PC6 (USART6_TX)** | STM32 → GPS Data |
+| VCC | **3.3V** | Power Supply |
+| GND | **GND** | Ground |
 
 ---
 
 ## MPU6050
 
-| MPU6050 | STM32 |
-|----------|--------|
-| SDA | I2C1 SDA |
-| SCL | I2C1 SCL |
-| VCC | 3.3V |
-| GND | GND |
+| MPU6050 Pin | STM32F411RE Pin | Description |
+|--------------|-----------------|-------------|
+| SDA | **PB9 (I2C1_SDA)** | I²C Data |
+| SCL | **PB8 (I2C1_SCL)** | I²C Clock |
+| VCC | **3.3V** | Power Supply |
+| GND | **GND** | Ground |
 
 ---
 
 ## NRF24L01+
 
-| NRF24 | STM32 |
-|--------|--------|
-| CE | GPIO |
-| CSN | SPI1 NSS |
-| SCK | SPI1 SCK |
-| MOSI | SPI1 MOSI |
-| MISO | SPI1 MISO |
-| IRQ | Not Used |
-| VCC | 3.3V |
-| GND | GND |
+| NRF24L01 Pin | STM32F411RE Pin | Description |
+|---------------|-----------------|-------------|
+| CE | **PA1** | Chip Enable |
+| CSN | **PA4 (SPI1_NSS)** | Chip Select |
+| SCK | **PA5 (SPI1_SCK)** | SPI Clock |
+| MOSI | **PA7 (SPI1_MOSI)** | SPI Data Out |
+| MISO | **PA6 (SPI1_MISO)** | SPI Data In |
+| IRQ | Not Connected | Interrupt (Unused) |
+| VCC | **3.3V** | Power Supply |
+| GND | **GND** | Ground |
 
-> **Note:** A **10 µF capacitor** is connected across the NRF24L01+ power pins to ensure a stable 3.3 V supply during wireless transmission.
-
----
-
-## SH1106 SPI OLED
-
-| OLED | STM32 |
-|------|--------|
-| DIN | SPI1 MOSI |
-| CLK | SPI1 SCK |
-| CS | GPIO |
-| DC | GPIO |
-| RST | GPIO |
-| VCC | 3.3V |
-| GND | GND |
+> **Note:** A **10 µF capacitor** is connected across the NRF24L01+ **VCC** and **GND** pins to ensure a stable 3.3 V supply during RF transmission.
 
 ---
 
-# Repository Structure
+## SH1106 SPI OLED Display
 
-```
-STM32-V2V-Collision-Warning-System
-│
-├── STM32_Project
-├── Images
-├── Documents
-├── README.md
-└── LICENSE
-```
+| OLED Pin | STM32F411RE Pin | Description |
+|-----------|-----------------|-------------|
+| VCC | **3.3V** | Power Supply |
+| GND | **GND** | Ground |
+| DIN (MOSI) | **PA7 (SPI1_MOSI)** | SPI Data |
+| CLK | **PA5 (SPI1_SCK)** | SPI Clock |
+| CS | **PB6** | Chip Select |
+| DC | **PB7** | Data/Command Select |
+| RST | **PB5** | Display Reset |
+| NC | Not Connected | Not Used |
+
 
 ---
 
@@ -178,7 +166,7 @@ STM32-V2V-Collision-Warning-System
 
 # Author
 
-**Atharv Waghmale**
+**Atharv Pramod Waghmale**
 
 Bachelor of Engineering (Electronics & Telecommunication)
 
