@@ -50,7 +50,7 @@ An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using th
 # Hardware Prototype
 
 <p align="center">
-<img src="Images/Hardware_Setup.jpg" width="700">
+<img src="Images/Hardware_Setup.jpeg" width="700">
 </p>
 
 ---
@@ -60,7 +60,7 @@ An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using th
 ### Normal Display
 
 <p align="center">
-<img src="Images/OLED_Normal.jpg" width="250">
+<img src="Images/OLED_Normal.png" width="250">
 </p>
 
 Displays:
@@ -76,7 +76,7 @@ Displays:
 ### Brake Warning
 
 <p align="center">
-<img src="Images/OLED_BrakeWarning.jpg" width="250">
+<img src="Images/OLED_BrakeWarning.jpeg" width="250">
 </p>
 
 Displays a warning whenever emergency braking information is received from another vehicle.
