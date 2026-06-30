@@ -41,8 +41,6 @@ An embedded Vehicle-to-Vehicle (V2V) Collision Warning System developed using th
 
 # System Architecture
 
-> Replace the image below with your block diagram.
-
 <p align="center">
 <img src="Images/Block_Diagram.png" width="800">
 </p>
